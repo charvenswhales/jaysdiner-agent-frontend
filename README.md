@@ -1,10 +1,12 @@
 # Jay's Diner Agent, Frontend
 
-The chat interface for [Jay's Diner Agent](<https://github.com/Deji-404/jaysdiner_agent.git>),
+The chat interface for [Jay's Diner Agent](https://github.com/Deji-404/jaysdiner_agent.git),
 an AI agent that orders real food from a real restaurant and pays for it
 with real money through [Monei](https://monei.cc). This repo is just the
 frontend. You'll need the backend running too for any of this to
 actually do anything.
+
+![Jay's Diner Agent welcome screen](./docs/screenshot.png)
 
 ## What's actually going on here
 
