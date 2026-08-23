@@ -36,8 +36,8 @@ accident of how the code happened to get organized.
 ## Getting started
 
 ```bash
-git clone <this-repo>
-cd jaysdiner-frontend
+git clone https://github.com/Deji-404/jaysdiner-agent-frontend.git
+cd jaysdiner-agent-frontend
 npm install
 ```
 
