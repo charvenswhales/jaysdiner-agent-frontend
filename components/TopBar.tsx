@@ -12,20 +12,25 @@ export default function TopBar({
   const initial = (user.full_name || user.email).charAt(0).toUpperCase();
 
   return (
-    <header className="flex shrink-0 items-center justify-between px-8 py-5">
-      <div className="flex items-center gap-2.5">
-        <div className="relative h-8 w-8 overflow-hidden rounded-full">
+    <header className="flex shrink-0 items-center justify-between px-4 py-4 sm:px-8 sm:py-5">
+      <div className="flex min-w-0 items-center gap-1.5 sm:gap-2.5">
+        <div className="relative h-6 w-6 shrink-0 overflow-hidden rounded-full sm:h-8 sm:w-8">
           <Image src="/monei-logo.webp" alt="Monei" fill className="object-cover" />
         </div>
-        <span className="text-[16px] font-semibold text-ink">Jay&apos;s Diner</span>
+        <span className="whitespace-nowrap text-[13px] font-semibold text-ink sm:text-[16px]">
+          Jay&apos;s Diner
+        </span>
         <span className="text-ink-faint">·</span>
-        <span className="text-[13px] font-medium text-ink-soft">powered by Monei</span>
+        <span className="whitespace-nowrap text-[11px] font-medium text-ink-soft sm:text-[13px]">
+          powered by Monei
+        </span>
       </div>
-      <div className="flex items-center gap-3">
+      <div className="flex shrink-0 items-center gap-2 sm:gap-3">
         <button
           type="button"
           onClick={onNewChat}
-          className="flex items-center gap-1.5 rounded-full border border-soft px-3.5 py-[7px] text-[13px] font-medium text-ink-soft transition-colors hover:border-primary hover:text-primary"
+          aria-label="New chat"
+          className="flex h-8 w-8 items-center justify-center rounded-full border border-soft text-ink-soft transition-colors hover:border-primary hover:text-primary sm:h-auto sm:w-auto sm:gap-1.5 sm:rounded-full sm:px-3.5 sm:py-[7px]"
         >
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
             <path
@@ -35,12 +40,12 @@ export default function TopBar({
               strokeLinecap="round"
             />
           </svg>
-          New chat
+          <span className="hidden text-[13px] font-medium sm:inline">New chat</span>
         </button>
         <Link
           href="/profile"
           aria-label="View profile"
-          className="flex h-8 w-8 items-center justify-center rounded-full bg-surface-soft text-[13px] font-semibold text-ink-soft transition-colors hover:bg-primary hover:text-white"
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-surface-soft text-[13px] font-semibold text-ink-soft transition-colors hover:bg-primary hover:text-white"
         >
           {initial}
         </Link>
