@@ -23,6 +23,7 @@ export default function Home() {
     sendMessage,
     resolveConfirmPrompt,
     markTransferPaid,
+    newConversation,
   } = useAgentChat(auth.token, auth.logout);
 
   const handleConfirm = (id: string) => {
@@ -51,7 +52,7 @@ export default function Home() {
 
   return (
     <div className="flex h-screen flex-col bg-bg">
-      <TopBar user={auth.user} />
+      <TopBar user={auth.user} onNewChat={newConversation} />
       <ChatPane
         timeline={timeline}
         isStreaming={isStreaming}

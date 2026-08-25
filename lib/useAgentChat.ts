@@ -111,6 +111,12 @@ export function useAgentChat(token: string | null, onUnauthorized?: () => void) 
     );
   }, []);
 
+  const newConversation = useCallback(() => {
+    conversationIdRef.current = null;
+    localStorage.removeItem(CONVO_KEY);
+    setTimeline([]);
+  }, []);
+
   const sendMessage = useCallback(
     async (text: string) => {
       const trimmed = text.trim();
@@ -359,5 +365,6 @@ export function useAgentChat(token: string | null, onUnauthorized?: () => void) 
     sendMessage,
     resolveConfirmPrompt,
     markTransferPaid,
+    newConversation,
   };
 }
