@@ -12,6 +12,7 @@ import { ConfirmPrompt, OrderFailedCard, OrderPlacedCard } from "./OrderCards";
 import { MoneiPaymentCard } from "./MoneiPaymentCard";
 
 import ThinkingIndicator from "./ThinkingIndicator";
+import { useStoreStatus } from "@/lib/useStoreStatus";
 
 const TEXT_SUGGESTIONS = ["What's on the menu tonight?", "Do you have anything spicy?"];
 
@@ -39,6 +40,7 @@ export default function ChatPane({
   onConnectMonei: () => void;
 }) {
   const [input, setInput] = useState("");
+  const storeStatus = useStoreStatus();
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -75,7 +77,7 @@ export default function ChatPane({
               </div>
 
               <h1 className="mb-2.5 text-[34px] font-semibold leading-[1.15] tracking-tight text-ink max-md:text-[26px]">
-                What are you craving today?
+                What are you craving tonight?
               </h1>
               <p className="mb-8 max-w-[440px] text-[15px] leading-relaxed text-ink-soft">
                 Tell the agent what you want. It checks the real menu, builds
@@ -122,6 +124,12 @@ export default function ChatPane({
       </div>
 
       <div className="px-6 pb-6 pt-4">
+        {storeStatus && !storeStatus.accepting_orders && (
+          <div className="mx-auto mb-3 flex max-w-[680px] items-center gap-2 rounded-full bg-amber-bg px-4 py-2 text-[12.5px] font-medium text-amber">
+            <span className="h-[6px] w-[6px] shrink-0 rounded-full bg-amber" />
+            {storeStatus.status_note || "Jay's Diner is closed right now. You can still browse the menu."}
+          </div>
+        )}
         <form
           onSubmit={handleSubmit}
           className="mx-auto flex max-w-[680px] items-center gap-2 rounded-full border border-soft bg-surface px-2 py-2 shadow-[0_1px_2px_rgba(22,22,26,0.04)] transition-shadow focus-within:shadow-[0_0_0_3px_rgba(15,110,86,0.12)]"
